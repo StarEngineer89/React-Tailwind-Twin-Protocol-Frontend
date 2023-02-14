@@ -1,3 +1,8 @@
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
 .logo-icon {
   width: 40px;
 }
@@ -9,4 +14,8 @@
     0px 16px 24px rgba(252, 87, 27, 0.24),
     0px 8px 8px -4px rgba(252, 87, 27, 0.12);
   border-radius: 20px;
+}
+
+.hero-title-font {
+  font-family: "Kaushan Script", cursive;
 }
