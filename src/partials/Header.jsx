@@ -63,9 +63,9 @@ function Header() {
           <div className="md:hidden">
 
             {/* Hamburger button */}
-            <button ref={trigger} className={`hamburger ${mobileNavOpen && 'active'}`} aria-controls="mobile-nav" aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+            <button ref={trigger} className={`hamburger ${mobileNavOpen && 'active fixed'} top-7 right-6`} style={{ zIndex: 21 }} aria-controls="mobile-nav" aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
               <span className="sr-only">Menu</span>
-              <svg className="w-6 h-6 fill-current text-gray-300 hover:text-gray-200 transition duration-150 ease-in-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-6 h-6 fill-current text-gray-800 hover:text-gray-600 transition duration-150 ease-in-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect y="4" width="24" height="2" rx="1" />
                 <rect y="11" width="24" height="2" rx="1" />
                 <rect y="18" width="24" height="2" rx="1" />
@@ -73,10 +73,10 @@ function Header() {
             </button>
 
             {/*Mobile navigation */}
-            <nav id="mobile-nav" ref={mobileNav} className="fixed top-0 z-20 right-0 w-[250px] h-full bg-slate-50 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxWidth: 250, opacity: 1 } : { maxWidth: 0, opacity: .8 } }>
-              <ul className="px-4 py-2 h-full">
+            <nav id="mobile-nav" ref={mobileNav} className="fixed top-0 z-20 right-0 w-[250px] h-full  flex items-center bg-slate-50 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxWidth: 180, opacity: 0.95 } : { maxWidth: 0, opacity: .8 } }>
+              <ul className="px-4 py-2">
                 {NAV_ITEMS.map((item, idx) => ((
-                  <li className="flex items-center" key={idx}>
+                  <li className="flex items-center mb-6" key={idx}>
                     <img src={item.icon} alt="nav-item" />
                     <Link to={item.link} className="text-gray-800 hover:text-gray-500 px-3 py-2 flex items-center transition duration-150 ease-in-out">
                       {item.title}

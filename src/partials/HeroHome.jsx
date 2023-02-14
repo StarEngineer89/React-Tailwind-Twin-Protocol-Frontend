@@ -12,9 +12,9 @@ function HeroHome() {
     <section className="px-4 md:px-16 lg:px-36">
       <div className="max-w-6xl relative">
         {/* Hero content */}
-        <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+        <div className="relative pt-32 pb-5 md:pt-40 md:pb-16">
           {/* Section header */}
-          <div className="max-w-2xl pb-12 md:pb-16">
+          <div className="max-w-2xl pb-0 md:pb-16">
             <h1 className="h1 mb-8 text-7xl text-[#141029CC] tracking-wide hero-title-font" data-aos="fade-up">
               Twin Protocol
             </h1>
