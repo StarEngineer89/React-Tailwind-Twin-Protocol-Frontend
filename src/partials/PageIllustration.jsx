@@ -4,7 +4,7 @@ function PageIllustration() {
   return (
     <img
       src="/images/home-hero.png"
-      className="absolute top-0 right-0 w-[100vw] translate-x-1/2 translate-y-[-38%]"
+      className="absolute top-0 right-0 w-[100vw] translate-x-1/2 translate-y-[-36%]"
     />
   );
 }

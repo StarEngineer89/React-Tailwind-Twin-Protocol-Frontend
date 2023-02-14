@@ -1,15 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // components
 import Logo from '../components/Logo';
 
 function Header() {
+  const { pathname } = useLocation();
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const trigger = useRef(null);
   const mobileNav = useRef(null);
+
+  const isMatched = (path) => pathname === path;
 
   // close the mobile menu on click outside
   useEffect(() => {
@@ -51,7 +54,7 @@ function Header() {
               {NAV_ITEMS.map((item, idx) => ((
                 <li className="flex items-center" key={idx}>
                   <img src={item.icon} alt="nav-item" />
-                  <Link to={item.link} className="text-gray-800 hover:text-gray-500 px-3 py-2 flex items-center transition duration-150 ease-in-out">
+                  <Link to={item.link} className={`${isMatched(item.link) && 'text-[#9c9c9c]'} hover:text-gray-500 px-3 py-2 flex items-center transition duration-150 ease-in-out`}>
                     {item.title}
                   </Link>
                 </li>
@@ -98,7 +101,7 @@ const NAV_ITEMS = [
   {
     icon: '/images/nav-app.png',
     title: 'App',
-    link: '/app'
+    link: '/apps'
   },
   {
     icon: '/images/nav-document.png',
