@@ -9,6 +9,9 @@
 @import 'additional-styles/toggle-switch.css';
 @import 'additional-styles/theme.css';
 
+/* custom styles */
+@import 'additional-styles/custom-styles.css';
+
 @import 'tailwindcss/utilities';
 
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
