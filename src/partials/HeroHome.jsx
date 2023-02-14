@@ -12,10 +12,10 @@ function HeroHome() {
     <section className="px-4 md:px-16 lg:px-36">
       <div className="max-w-6xl relative">
         {/* Hero content */}
-        <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+        <div className="relative pt-32 pb-5 md:pt-40 md:pb-16">
           {/* Section header */}
-          <div className="max-w-2xl pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">
+          <div className="max-w-2xl pb-0 md:pb-16">
+            <h1 className="h1 mb-8 text-7xl text-[#141029CC] tracking-wide hero-title-font" data-aos="fade-up">
               Twin Protocol
             </h1>
             <p className="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="200">
@@ -24,8 +24,8 @@ function HeroHome() {
             <p className="text-gray-600 mb-4" data-aos="fade-up" data-aos-delay="200">
               Twin Protocol — DeFi protocol that enables Twin Assets (twAssets): synthetic assets that give traders exposure to real-world assets (RWA) by reflecting their price activity on-chain. We take the best that DeFi has to offer and pair it with real-world asset (e.g. synthetic gold) exposure on Arbitrum.
             </p>
-            <div className="flex flex-col-reverse items-left md:flex-row md:items-center">
-              <a className="btn-twin w-full text-white text-center font-semibold p-6 mb-4 mr-6 sm:w-auto sm:mb-0" href="#0"  data-aos="fade-up" data-aos-delay="400">
+            <div className="flex flex-col-reverse items-left md:flex-row md:items-center mt-12 md:mt-20">
+              <a className="btn-twin w-full text-white text-center font-semibold p-6 px-8 mb-4 mr-6 sm:w-auto sm:mb-0" href="#0"  data-aos="fade-up" data-aos-delay="400">
                 Get $TWIN token
               </a>
               <Link to="#" className="block mb-6 md:mb-0" aria-label="Cruip" data-aos="fade-up" data-aos-delay="600">

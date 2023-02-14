@@ -36,10 +36,7 @@ function Header() {
     <header className="absolute w-full z-30">
       <div className="max-w-full mx-auto px-4 md:px-16 lg:px-36">
         <div className="flex items-center justify-between h-20">
-
-          {/* Site branding */}
           <div className="shrink-0 mr-4">
-            {/* Logo */}
             <div className="flex items-center">
               <Logo />
               <span className="ml-1 text-2xl mt-1 font-bold">Twin Protocol</span>
@@ -50,21 +47,15 @@ function Header() {
           <nav className="hidden md:flex md:grow">
 
             {/* Desktop menu links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
-                <Link to="/app" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">
-                  App
-                </Link>
-              </li>
-              <li>
-                <Link to="/documents" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Documents</Link>
-              </li>
-              <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Twitter</Link>
-              </li>
-              <li>
-                <Link to="#" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Telegram</Link>
-              </li>
+            <ul className="flex space-x-8 grow justify-end flex-wrap items-center">
+              {NAV_ITEMS.map((item, idx) => ((
+                <li className="flex items-center" key={idx}>
+                  <img src={item.icon} alt="nav-item" />
+                  <Link to={item.link} className="text-gray-800 hover:text-gray-500 px-3 py-2 flex items-center transition duration-150 ease-in-out">
+                    {item.title}
+                  </Link>
+                </li>
+              )))}
             </ul>
           </nav>
 
@@ -72,9 +63,9 @@ function Header() {
           <div className="md:hidden">
 
             {/* Hamburger button */}
-            <button ref={trigger} className={`hamburger ${mobileNavOpen && 'active'}`} aria-controls="mobile-nav" aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+            <button ref={trigger} className={`hamburger ${mobileNavOpen && 'active fixed'} top-7 right-6`} style={{ zIndex: 21 }} aria-controls="mobile-nav" aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
               <span className="sr-only">Menu</span>
-              <svg className="w-6 h-6 fill-current text-gray-300 hover:text-gray-200 transition duration-150 ease-in-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-6 h-6 fill-current text-gray-800 hover:text-gray-600 transition duration-150 ease-in-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect y="4" width="24" height="2" rx="1" />
                 <rect y="11" width="24" height="2" rx="1" />
                 <rect y="18" width="24" height="2" rx="1" />
@@ -82,20 +73,16 @@ function Header() {
             </button>
 
             {/*Mobile navigation */}
-            <nav id="mobile-nav" ref={mobileNav} className="fixed top-0 z-20 right-0 w-[250px] h-full bg-slate-50 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxWidth: 250, opacity: 1 } : { maxWidth: 0, opacity: .8 } }>
-              <ul className="px-4 py-2 h-full">
-                <li>
-                  <Link to="/app" className="flex text-gray-800 hover:text-gray-200 py-2">App</Link>
-                </li>
-                <li>
-                  <Link to="/documents" className="flex text-gray-800 hover:text-gray-200 py-2">Documents</Link>
-                </li>
-                <li>
-                  <Link to="#" className="flex text-gray-800 hover:text-gray-200 py-2">Twitter</Link>
-                </li>
-                <li>
-                  <Link to="#" className="flex text-gray-800 hover:text-gray-200 py-2">Telegram</Link>
-                </li>
+            <nav id="mobile-nav" ref={mobileNav} className="fixed top-0 z-20 right-0 w-[250px] h-full  flex items-center bg-slate-50 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxWidth: 180, opacity: 0.95 } : { maxWidth: 0, opacity: .8 } }>
+              <ul className="px-4 py-2">
+                {NAV_ITEMS.map((item, idx) => ((
+                  <li className="flex items-center mb-6" key={idx}>
+                    <img src={item.icon} alt="nav-item" />
+                    <Link to={item.link} className="text-gray-800 hover:text-gray-500 px-3 py-2 flex items-center transition duration-150 ease-in-out">
+                      {item.title}
+                    </Link>
+                  </li>
+                )))}
               </ul>
             </nav>
           </div>
@@ -106,3 +93,26 @@ function Header() {
 }
 
 export default Header;
+
+const NAV_ITEMS = [
+  {
+    icon: '/images/nav-app.png',
+    title: 'App',
+    link: '/app'
+  },
+  {
+    icon: '/images/nav-document.png',
+    title: 'Documents',
+    link: '/documents'
+  },
+  {
+    icon: '/images/nav-twitter.png',
+    title: 'Twitter',
+    link: '#'
+  },
+  {
+    icon: '/images/nav-telegram.png',
+    title: 'Telegram',
+    link: '#'
+  }
+]
