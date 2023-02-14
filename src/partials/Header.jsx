@@ -34,7 +34,7 @@ function Header() {
 
   return (
     <header className="absolute w-full z-30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-full mx-auto px-4 md:px-16 lg:px-36">
         <div className="flex items-center justify-between h-20">
 
           {/* Site branding */}
@@ -42,7 +42,7 @@ function Header() {
             {/* Logo */}
             <div className="flex items-center">
               <Logo />
-              <span className="ml-1 text-2xl mt-1">Twin Protocol</span>
+              <span className="ml-1 text-2xl mt-1 font-bold">Twin Protocol</span>
             </div>
           </div>
 
@@ -52,18 +52,18 @@ function Header() {
             {/* Desktop menu links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
-                <Link to="/app" className="text-gray-300 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out">
+                <Link to="/app" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">
                   App
                 </Link>
               </li>
               <li>
-                <Link to="/documents" className="text-gray-300 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out">Documents</Link>
+                <Link to="/documents" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Documents</Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-300 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out">Twitter</Link>
+                <Link to="#" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Twitter</Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-300 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out">Telegram</Link>
+                <Link to="#" className="text-gray-800 hover:text-gray-500 px-4 py-2 flex items-center transition duration-150 ease-in-out">Telegram</Link>
               </li>
             </ul>
           </nav>
@@ -85,22 +85,20 @@ function Header() {
             <nav id="mobile-nav" ref={mobileNav} className="fixed top-0 z-20 right-0 w-[250px] h-full bg-slate-50 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxWidth: 250, opacity: 1 } : { maxWidth: 0, opacity: .8 } }>
               <ul className="px-4 py-2 h-full">
                 <li>
-                  <Link to="/app" className="flex text-gray-300 hover:text-gray-200 py-2">App</Link>
+                  <Link to="/app" className="flex text-gray-800 hover:text-gray-200 py-2">App</Link>
                 </li>
                 <li>
-                  <Link to="/documents" className="flex text-gray-300 hover:text-gray-200 py-2">Documents</Link>
+                  <Link to="/documents" className="flex text-gray-800 hover:text-gray-200 py-2">Documents</Link>
                 </li>
                 <li>
-                  <Link to="#" className="flex text-gray-300 hover:text-gray-200 py-2">Twitter</Link>
+                  <Link to="#" className="flex text-gray-800 hover:text-gray-200 py-2">Twitter</Link>
                 </li>
                 <li>
-                  <Link to="#" className="flex text-gray-300 hover:text-gray-200 py-2">Telegram</Link>
+                  <Link to="#" className="flex text-gray-800 hover:text-gray-200 py-2">Telegram</Link>
                 </li>
               </ul>
             </nav>
-
           </div>
-
         </div>
       </div>
     </header>
