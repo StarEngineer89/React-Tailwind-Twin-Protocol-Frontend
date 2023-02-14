@@ -1,3 +1,12 @@
 .logo-icon {
   width: 40px;
 }
+
+.btn-twin {
+  background: linear-gradient(135deg, #ffab00 0%, #ff5e00 50.81%, #f54562 100%);
+  box-shadow: 0px 0px 1px rgba(252, 87, 27, 0.24),
+    0px 2px 4px -1px rgba(252, 87, 27, 0.12),
+    0px 16px 24px rgba(252, 87, 27, 0.24),
+    0px 8px 8px -4px rgba(252, 87, 27, 0.12);
+  border-radius: 20px;
+}
