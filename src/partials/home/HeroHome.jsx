@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-import Modal from '../utils/Modal';
-
-import HeroImage from '../images/hero-image-01.jpg';
+import Modal from '../../utils/Modal';
 
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -37,7 +35,6 @@ function HeroHome() {
           {/* Hero image */}
           <div>
             {/* <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
-              <img className="mx-auto" src={HeroImage} width="1024" height="504" alt="Hero" />
               <a
                 className="absolute group"
                 href="#0"

@@ -19,3 +19,70 @@ p {
 .hero-title-font {
   font-family: "Kaushan Script", cursive;
 }
+
+/* -------- accordion ------- */
+.accordion {
+  width: 100%;
+  max-width: 570px;
+}
+.panel {
+  background-color: #EBF1F5;
+  border: 1px solid #403C4F;
+  border-radius: 16px;
+}
+.panel__label {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 18px 60px 18px 18px;
+  font-weight: 500;
+  font-size: 17px;
+  font-family: inherit;
+  transition: color 0.2s linear;
+  cursor: pointer;
+}
+.panel__label:focus {
+  outline: none;
+}
+.panel__label:after,
+.panel__label:before {
+  content: '';
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  width: 22px;
+  height: 2px;
+  margin-top: -2px;
+  background-color: #372717;
+}
+.panel__label:before {
+  transform: rotate(-90deg);
+  transition: transform 0.35s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.panel[aria-expanded='true'] .panel__content {
+  opacity: 1;
+}
+.panel[aria-expanded='true'] .panel__label {
+  color: #957029;
+}
+.panel[aria-expanded='true'] .panel__label:before {
+  transform: rotate(0deg);
+}
+.panel__inner {
+  overflow: hidden;
+  will-change: height;
+  transition: height 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.panel__content {
+  margin: 5px 25px 25px;
+  font-size: 14px;
+  color: #756658;
+  opacity: 0;
+  transition: opacity 0.3s linear 0.18s;
+}
+.panel:not(:last-child) {
+  margin-bottom: 10px;
+}
