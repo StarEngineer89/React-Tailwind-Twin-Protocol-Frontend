@@ -12,9 +12,7 @@ import AOS from 'aos';
 
 import Home from './pages/Home';
 import Documents from './pages/Documents';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ResetPassword from './pages/ResetPassword';
+import Apps from './pages/Apps';
 
 function App() {
 
@@ -40,9 +38,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/documents" element={<Documents />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route exact path="/apps" element={<Apps />} />
       </Routes>
     </>
   );

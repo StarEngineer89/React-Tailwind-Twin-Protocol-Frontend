@@ -20,14 +20,19 @@ p {
   font-family: "Kaushan Script", cursive;
 }
 
+.text-stroke {
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
+  color: rgba(15, 15, 76, 0);
+}
+
 /* -------- accordion ------- */
 .accordion {
   width: 100%;
   max-width: 570px;
 }
 .panel {
-  background-color: #EBF1F5;
-  border: 1px solid #403C4F;
+  background-color: #ebf1f5;
+  border: 1px solid #403c4f;
   border-radius: 16px;
 }
 .panel__label {
@@ -49,7 +54,7 @@ p {
 }
 .panel__label:after,
 .panel__label:before {
-  content: '';
+  content: "";
   position: absolute;
   right: 25px;
   top: 50%;
@@ -62,13 +67,13 @@ p {
   transform: rotate(-90deg);
   transition: transform 0.35s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
-.panel[aria-expanded='true'] .panel__content {
+.panel[aria-expanded="true"] .panel__content {
   opacity: 1;
 }
-.panel[aria-expanded='true'] .panel__label {
+.panel[aria-expanded="true"] .panel__label {
   color: #957029;
 }
-.panel[aria-expanded='true'] .panel__label:before {
+.panel[aria-expanded="true"] .panel__label:before {
   transform: rotate(0deg);
 }
 .panel__inner {
