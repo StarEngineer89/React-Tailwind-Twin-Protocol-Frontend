@@ -14,10 +14,10 @@ function Footer() {
           </div>
 
           <div className="flex items-center space-x-5 order-3 md:order-2">
-            <Link to="#" className="block" aria-label="Cruip">
+            <Link to="/apps" className="block" aria-label="Cruip">
               App
             </Link>
-            <Link to="#" className="block" aria-label="Cruip">
+            <Link to="/documents" className="block" aria-label="Cruip">
               Documents
             </Link>
           </div>
