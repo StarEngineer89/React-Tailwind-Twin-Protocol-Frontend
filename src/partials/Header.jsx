@@ -47,7 +47,7 @@ function Header() {
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
+          <nav className="hidden lg:flex lg:grow">
 
             {/* Desktop menu links */}
             <ul className="flex space-x-8 grow justify-end flex-wrap items-center">
@@ -60,10 +60,14 @@ function Header() {
                 </li>
               )))}
             </ul>
+
+            <button className="btn-twin w-full text-white text-center font-semibold p-2 px-4 mb-4 ml-6 sm:w-auto sm:mb-0 whitespace-normal">
+              Connect Wallet
+            </button>
           </nav>
 
           {/* Mobile menu */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
 
             {/* Hamburger button */}
             <button ref={trigger} className={`hamburger ${mobileNavOpen && 'active fixed'} top-7 right-6`} style={{ zIndex: 21 }} aria-controls="mobile-nav" aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
@@ -86,6 +90,9 @@ function Header() {
                     </Link>
                   </li>
                 )))}
+                <button className={`btn-twin w-full text-white text-center p-2 px-4 mb-4 sm:w-auto sm:mb-0 ${!mobileNavOpen && 'hidden'}`}>
+                  Connect Wallet
+                </button>
               </ul>
             </nav>
           </div>
