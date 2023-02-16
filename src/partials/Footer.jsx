@@ -31,12 +31,12 @@ function Footer() {
             </Link>
           </div>
 
-          <div className="flex items-center justify-end md:justify-start space-x-1 order-4">
+          {/* <div className="flex items-center justify-end md:justify-start space-x-1 order-4">
             <span>made by</span>
             <Link to="#" className="block font-bold underline" aria-label="Cruip">
               roobinium.io
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

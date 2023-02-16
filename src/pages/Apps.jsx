@@ -9,9 +9,11 @@ import HeroApp from '../partials/apps/HeroApp';
 // layouts
 import Header from '../partials/Header';
 import Footer from '../partials/Footer';
+import ContractContextProvider from '../context/ContractContext';
 
 function Home() {
   return (
+  <ContractContextProvider>
     <div className="flex flex-col min-h-screen overflow-hidden">
       {/*  Site header */}
       <Header />
@@ -30,6 +32,7 @@ function Home() {
       {/*  Site footer */}
       <Footer />
     </div>
+    </ContractContextProvider>
   );
 }
 

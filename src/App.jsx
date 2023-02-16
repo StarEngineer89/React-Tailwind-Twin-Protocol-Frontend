@@ -36,9 +36,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/documents" element={<Documents />} />
-        <Route exact path="/apps" element={<Apps />} />
+        <Route exact path="/" element={<Apps />} />
       </Routes>
     </>
   );

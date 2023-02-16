@@ -1,10 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ContractContext } from '../context/ContractContext';
+
+import Web3 from 'web3';
 
 // components
 import Logo from '../components/Logo';
 
 function Header() {
+ 
+  const {user, setUser} = useContext(ContractContext);
+
   const { pathname } = useLocation();
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -13,6 +19,24 @@ function Header() {
   const mobileNav = useRef(null);
 
   const isMatched = (path) => pathname === path;
+
+  const connectWallet = async (e) => {
+    e.preventDefault();
+    if(window.ethereum) {
+       await window.ethereum.request({ method: "eth_requestAccounts"});
+       window.web3 = new Web3(window.ethereum);
+
+       const account = web3.eth.accounts;
+
+       const walletAddress = account.givenProvider.selectedAddress;
+       setUser(walletAddress);
+
+       console.log(`Wallet: ${walletAddress}`);
+    } else {
+     console.log("No wallet");
+    }
+};
+
 
   // close the mobile menu on click outside
   useEffect(() => {
@@ -61,8 +85,13 @@ function Header() {
               )))}
             </ul>
 
-            <button className="btn-twin w-full text-white text-center font-semibold p-2 px-4 mb-4 ml-6 sm:w-auto sm:mb-0 whitespace-normal">
-              Connect Wallet
+            <button className="btn-twin w-full text-white text-center font-semibold p-2 px-4 mb-4 ml-6 sm:w-auto sm:mb-0 whitespace-normal"
+              onClick={(e) => connectWallet(e)}
+            >
+              {user
+                 ? <h4>{user}</h4>
+                 : <h4>Connect Wallet</h4>
+                }
             </button>
           </nav>
 
@@ -90,8 +119,9 @@ function Header() {
                     </Link>
                   </li>
                 )))}
-                <button className={`btn-twin w-full text-white text-center p-2 px-4 mb-4 sm:w-auto sm:mb-0 ${!mobileNavOpen && 'hidden'}`}>
-                  Connect Wallet
+                <button className={`btn-twin w-full text-white text-center p-2 px-4 mb-4 sm:w-auto sm:mb-0 ${!mobileNavOpen && 'hidden'}`} 
+                   onClick={() => console.log('fuck u')}>
+                
                 </button>
               </ul>
             </nav>
@@ -105,16 +135,16 @@ function Header() {
 export default Header;
 
 const NAV_ITEMS = [
-  {
-    icon: '/images/nav-app.png',
-    title: 'App',
-    link: '/apps'
-  },
-  {
-    icon: '/images/nav-document.png',
-    title: 'Documents',
-    link: '/documents'
-  },
+  // {
+  //   icon: '/images/nav-app.png',
+  //   title: 'App',
+  //   link: '/apps'
+  // },
+  // {
+  //   icon: '/images/nav-document.png',
+  //   title: 'Documents',
+  //   link: '/documents'
+  // },
   {
     icon: '/images/nav-twitter.png',
     title: 'Twitter',
