@@ -38,6 +38,16 @@ function HeroApp() {
     setBalance(bal);
   }
 
+  const stakeTwin = async (amount) => {
+    await twin.methods.approve(twinStaking._address, amount).send({ from: user}).on('transactionHash', (hash) => {
+       twinStaking.methods.stakeToken(amount).send({ from: user})
+        .on('transactionHash', (hash) => {
+           console.log(hash);
+        });
+    })
+    
+  };
+
 
   useEffect(()=> {
     getPoolStatus();
