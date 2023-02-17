@@ -5,6 +5,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
+@import '~flowbite';
+
 /* Additional styles */
 @import 'additional-styles/utility-patterns.css';
 @import 'additional-styles/range-slider.css';

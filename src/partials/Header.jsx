@@ -31,11 +31,15 @@ function Header() {
        const walletAddress = account.givenProvider.selectedAddress;
        setUser(walletAddress);
 
+       console.log("chain id: ", web3.eth.getChainId());
+
        console.log(`Wallet: ${walletAddress}`);
     } else {
      console.log("No wallet");
     }
 };
+
+
 
 
   // close the mobile menu on click outside

@@ -13,6 +13,7 @@ import AOS from 'aos';
 import Home from './pages/Home';
 import Documents from './pages/Documents';
 import Apps from './pages/Apps';
+import ContractContextProvider from './context/ContractContext';
 
 function App() {
 
@@ -35,9 +36,11 @@ function App() {
 
   return (
     <>
+    <ContractContextProvider>
       <Routes>
         <Route exact path="/" element={<Apps />} />
       </Routes>
+      </ContractContextProvider>
     </>
   );
 }

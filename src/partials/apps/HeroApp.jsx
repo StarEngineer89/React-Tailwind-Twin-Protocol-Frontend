@@ -5,14 +5,19 @@ import {ContractContext} from '../../context/ContractContext';
 
 
 
+
+
+
 function HeroApp() {
 
-  const { user, twinStaking, twin} = useContext(ContractContext);
+  const { user, twinStaking, twin, show, setShow, balance, setBalance} = useContext(ContractContext);
 
+  const [poolBalance, setPoolBalance] = useState(0);
   const [poolStatus, setPoolStatus] = useState("Close");
   const [stakedAmount, setUserStakeAmount] = useState(0);
   const [reward, setReward] = useState(0);
-  const [balance, setBalance] = useState(0);
+  
+  
 
   const getPoolStatus = async () => {
     const status = await twinStaking.methods.getPoolStatus().call();
@@ -25,28 +30,42 @@ function HeroApp() {
 
   const getUserStakedTWIN = async () => {
     const amount = await twinStaking.methods.getUserStakeAmount(user).call();
-    setUserStakeAmount(amount);
+    const divBal = amount / (1 * 10**18);
+    setUserStakeAmount(divBal);
   }
 
   const getRewards = async () => {
     const reward = await twinStaking.methods.checkRewardCycle(user).call();
-    setReward(reward);
+    const divBal = reward / (1 * 10**18);
+    setReward(divBal);
   }
 
   const twinBalance = async () => {
     const bal = await twin.methods.balanceOf(user).call();
-    setBalance(bal);
+    const divBal = bal / (1 * 10**18);
+    setBalance(divBal);
   }
 
-  const stakeTwin = async (amount) => {
-    await twin.methods.approve(twinStaking._address, amount).send({ from: user}).on('transactionHash', (hash) => {
-       twinStaking.methods.stakeToken(amount).send({ from: user})
-        .on('transactionHash', (hash) => {
-           console.log(hash);
-        });
+  const unstake = async () => {
+    await twinStaking.methods.unstakeToken().send({ from: user }).on('transactionHash', (hash) => {
+      console.log(hash);
     })
-    
-  };
+  }
+
+  const claim = async () => {
+    await twinStaking.methods.claimRewards().send({ from: user }).on('transactionHash', (hash) => {
+      console.log(hash);
+    })
+  }
+
+  const getPoolBalance = async () => {
+    const bal = await twin.methods.balanceOf("0xfc0e031ecd816a4d314232eAb6119EEb445Df82E").call();
+    const divBal = bal / (1 * 10**18);
+    setPoolBalance(divBal);
+  }
+
+
+  
 
 
   useEffect(()=> {
@@ -54,6 +73,7 @@ function HeroApp() {
     getUserStakedTWIN();
     getRewards();
     twinBalance();
+    getPoolBalance();
   }, [user])
 
 
@@ -81,17 +101,21 @@ function HeroApp() {
                   </div>
                 ))}
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
+                    <div>TVL</div>
+                    <div>{poolBalance}{" "}TWIN</div>
+                  </div>
+                  <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>Pool Status</div>
                     <div>{poolStatus}</div>
                   </div>
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>Your Stake</div>
-                    <div>{stakedAmount}</div>
+                    <div>{stakedAmount}{" "}TWIN</div>
                   </div>
-                  <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
+                  {/* <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>TWIN Balance</div>
                     <div>{balance}</div>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>TWIN Accumulated Rewards</div>
                     <div>{reward}</div>
@@ -104,16 +128,31 @@ function HeroApp() {
             
               <div className="bg-gray-100 pt-4">
                 <Link to="#" className="block w-full mb-6 text-center text-gray-900 underline" aria-label="Cruip">
-                  Get dART-ETH UNI LP Token
+                  Get TWIN
                 </Link>
                 <div className="md:flex justify-around pb-8 px-2">
-                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0">
+                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0"
+                   onClick={() => {
+                    setShow(true);
+                    console.log(show)
+                   }}
+                  >
                     Stake
                   </button>
-                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0">
+                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0"
+                    onClick={() => unstake()}
+                  >
                     Unstake
                   </button>
-                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0">
+                  <button className="btn-twin w-full text-white text-center font-semibold round-md py-3 px-8 sm:w-auto mb-2 sm:mb-0" href="#0"
+                    onClick={() => {
+                      if(reward != 0) {
+                        claim();
+                      } else {
+                        alert("No reward to claim!");
+                      }
+                    }}
+                  >
                     Claim
                   </button>
                 </div>
@@ -122,6 +161,8 @@ function HeroApp() {
           </div>
         </div>
       </div>
+
+      
     </section>
   );
 }
@@ -137,10 +178,10 @@ const STAKING_LIST = [
     title: 'Maturity',
     value: '7 days'
   },
-  {
-    title: 'TVL',
-    value: '$NaN'
-  },
+  // {
+  //   title: 'TVL',
+  //   value: '$NaN'
+  // },
   // {
   //   title: 'Pool status',
   //   value: 'Open'

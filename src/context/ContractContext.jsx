@@ -18,6 +18,11 @@ function ContractContextProvider(props) {
     const [user, setUser] = useState("");
     const [twin, setTwin] = useState({});
     const [twinStaking, setTwinStaking] = useState({});
+    const [show, setShow] = useState(false);
+    const [balance , setBalance] = useState(0);  
+    
+  
+
 
     const loadWeb3 = async() => {
         if (window.ethereum) {
@@ -43,12 +48,13 @@ function ContractContextProvider(props) {
     useEffect(() => {
         loadWeb3();
         loadContract();
+
     }, [])
 
     
 
     return(
-         <ContractContext.Provider value={{twin, twinStaking, user, setUser}}>{props.children}</ContractContext.Provider>
+         <ContractContext.Provider value={{twin, twinStaking, user, setUser, show, setShow, balance, setBalance}}>{props.children}</ContractContext.Provider>
     )
 }
 
