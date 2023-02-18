@@ -7,10 +7,10 @@ export const ContractContext = createContext();
 import TwinToken from '../contracts/IERC20.json';
 import TwinStaking from '../contracts/TwinStaking.json';
 
-const twinTokenContractAddress = '0x9f2ea4107d097197b47444FBe28b540aEd097aC3';
+const twinTokenContractAddress = '0x14917033ec93Bc13BF9E41427FaB7ED56dc64349';
 const twinTokenABI = TwinToken.abi;
 
-const twinStakingContractAddress = '0xfc0e031ecd816a4d314232eAb6119EEb445Df82E';
+const twinStakingContractAddress = '0xb3006855b4A11FE8dA5CfB6c7446Fbcf17Cc3D3B';
 const twinStakingABI = TwinStaking.abi;
 
 function ContractContextProvider(props) {
