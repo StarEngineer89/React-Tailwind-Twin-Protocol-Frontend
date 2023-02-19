@@ -60,9 +60,9 @@ function HeroApp() {
   }
 
   const getPoolBalance = async () => {
-    const bal = await twin.methods.balanceOf("0xfc0e031ecd816a4d314232eAb6119EEb445Df82E").call();
-    const divBal = bal / (1 * 10**18);
-    setPoolBalance(divBal);
+    const bal = await twin.methods.balanceOf("0x9601b5c656BA5312EC681a756Ac031409f91C0F7").call();
+    const divBal = bal / (1000000000000000000);
+    setPoolBalance(Math.round(divBal));
   }
 
   const getMaturity = async () => {
