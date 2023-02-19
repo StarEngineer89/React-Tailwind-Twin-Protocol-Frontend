@@ -74,9 +74,10 @@ function HeroApp() {
   }
 
   const getTotal = async () => {
-    const bal = await twinStaking.methods.getTotalStakedInPool().call();
+    const bal = await twinStaking.methods.getTotalStakedinPool().call();
     const divBal = bal / (1000000000000000000);
     setTotal(Math.round(divBal));
+    console.log("total: ", divBal)
   }
 
 
