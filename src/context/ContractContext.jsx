@@ -10,7 +10,7 @@ import TwinStaking from '../contracts/TwinStaking.json';
 const twinTokenContractAddress = '0x14917033ec93Bc13BF9E41427FaB7ED56dc64349';
 const twinTokenABI = TwinToken.abi;
 
-const twinStakingContractAddress = '0x9601b5c656BA5312EC681a756Ac031409f91C0F7';
+const twinStakingContractAddress = '0xf743541bBd7EB3366C30323bcF2B39ff005DC745';
 const twinStakingABI = TwinStaking.abi;
 
 function ContractContextProvider(props) {

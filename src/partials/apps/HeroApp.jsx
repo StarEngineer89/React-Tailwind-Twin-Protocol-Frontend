@@ -17,6 +17,7 @@ function HeroApp() {
   const [stakedAmount, setUserStakeAmount] = useState(0);
   const [reward, setReward] = useState(0);
   const [maturity, setMaturity] = useState(0);
+  const [total, setTotal] = useState(0);
   
   
 
@@ -60,7 +61,7 @@ function HeroApp() {
   }
 
   const getPoolBalance = async () => {
-    const bal = await twin.methods.balanceOf("0x9601b5c656BA5312EC681a756Ac031409f91C0F7").call();
+    const bal = await twin.methods.balanceOf("0xf743541bBd7EB3366C30323bcF2B39ff005DC745").call();
     const divBal = bal / (1000000000000000000);
     setPoolBalance(Math.round(divBal));
   }
@@ -70,6 +71,12 @@ function HeroApp() {
     const days = bal / (24 * 60 * 60);
     setMaturity(days);
 
+  }
+
+  const getTotal = async () => {
+    const bal = await twinStaking.methods.getTotalStakedInPool().call();
+    const divBal = bal / (1000000000000000000);
+    setTotal(Math.round(divBal));
   }
 
 
@@ -83,6 +90,7 @@ function HeroApp() {
     twinBalance();
     getPoolBalance();
     getMaturity();
+    getTotal();
   }, [user])
 
 
@@ -115,7 +123,7 @@ function HeroApp() {
                   </div>
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>TVL</div>
-                    <div>{poolBalance}{" "}TWIN</div>
+                    <div>{total}{" "}TWIN</div>
                   </div>
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>Pool Status</div>
