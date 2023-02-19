@@ -13,20 +13,20 @@ function Footer() {
             <span className="ml-1 font-bold">Twin Protocol</span>
           </div>
 
-          <div className="flex items-center space-x-5 order-3 md:order-2">
+          {/* <div className="flex items-center space-x-5 order-3 md:order-2">
             <Link to="/apps" className="block" aria-label="Cruip">
               App
             </Link>
             <Link to="/documents" className="block" aria-label="Cruip">
               Documents
             </Link>
-          </div>
+          </div> */}
 
           <div className="flex items-center justify-end md:justify-start space-x-5 order-2 md:order-3">
-            <Link to="#" className="block" aria-label="Cruip">
+            <Link to="https://twitter.com/Twinprotocolxyz" className="block" aria-label="Cruip">
               <img src="/images/social-twitter.png" alt="social-twitter" />
             </Link>
-            <Link to="#" className="block" aria-label="Cruip">
+            <Link to="https://t.me/Twinprotocolxyz" className="block" aria-label="Cruip">
               <img src="/images/social-telegram.png" alt="social-telegram" />
             </Link>
           </div>

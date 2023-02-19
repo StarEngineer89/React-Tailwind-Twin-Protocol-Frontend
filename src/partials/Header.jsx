@@ -152,11 +152,11 @@ const NAV_ITEMS = [
   {
     icon: '/images/nav-twitter.png',
     title: 'Twitter',
-    link: '#'
+    link: 'https://twitter.com/Twinprotocolxyz'
   },
   {
     icon: '/images/nav-telegram.png',
     title: 'Telegram',
-    link: '#'
+    link: 'https://t.me/Twinprotocolxyz'
   }
 ]

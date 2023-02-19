@@ -16,6 +16,7 @@ function HeroApp() {
   const [poolStatus, setPoolStatus] = useState("Close");
   const [stakedAmount, setUserStakeAmount] = useState(0);
   const [reward, setReward] = useState(0);
+  const [maturity, setMaturity] = useState(0);
   
   
 
@@ -64,6 +65,13 @@ function HeroApp() {
     setPoolBalance(divBal);
   }
 
+  const getMaturity = async () => {
+    const bal = await twinStaking.methods.getMaturityPeriod().call();
+    const days = bal / (24 * 60 * 60);
+    setMaturity(days);
+
+  }
+
 
   
 
@@ -74,6 +82,7 @@ function HeroApp() {
     getRewards();
     twinBalance();
     getPoolBalance();
+    getMaturity();
   }, [user])
 
 
@@ -100,6 +109,10 @@ function HeroApp() {
                     <div>{item.value}</div>
                   </div>
                 ))}
+                  <div  className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
+                    <div>Maturity</div>
+                    <div>{maturity}{" "}Days</div>
+                  </div>
                   <div className="flex justify-between px-6 md:px-10 py-4 text-md font-normal">
                     <div>TVL</div>
                     <div>{poolBalance}{" "}TWIN</div>
@@ -127,7 +140,7 @@ function HeroApp() {
               </div>
             
               <div className="bg-gray-100 pt-4">
-                <Link to="#" className="block w-full mb-6 text-center text-gray-900 underline" aria-label="Cruip">
+                <Link to="https://oreoswap.finance/swap?outputCurrency=0x14917033ec93bc13bf9e41427fab7ed56dc64349" className="block w-full mb-6 text-center text-gray-900 underline" aria-label="Cruip">
                   Get TWIN
                 </Link>
                 <div className="md:flex justify-around pb-8 px-2">
@@ -174,10 +187,10 @@ const STAKING_LIST = [
     title: 'APY',
     value: '50%'
   },
-  {
-    title: 'Maturity',
-    value: '7 days'
-  },
+  // {
+  //   title: 'Maturity',
+  //   value: '7 days'
+  // },
   // {
   //   title: 'TVL',
   //   value: '$NaN'
