@@ -10,7 +10,7 @@ import {ContractContext} from '../../context/ContractContext';
 
 function HeroApp() {
 
-  const { user, twinStaking, twin, show, setShow, balance, setBalance} = useContext(ContractContext);
+  const { user, twinStaking, twin, show, setShow, balance, setBalance, totalStaked} = useContext(ContractContext);
 
   const [poolBalance, setPoolBalance] = useState(0);
   const [poolStatus, setPoolStatus] = useState("Close");
@@ -85,14 +85,17 @@ function HeroApp() {
 
 
   useEffect(()=> {
-    getPoolStatus();
     getUserStakedTWIN();
     getRewards();
     twinBalance();
     getPoolBalance();
-    getMaturity();
-    getTotal();
   }, [user])
+
+  useEffect(() => {
+    getTotal();
+    getMaturity();
+    getPoolStatus();
+  })
 
 
 

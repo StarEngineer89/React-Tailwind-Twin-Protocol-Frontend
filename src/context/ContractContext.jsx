@@ -21,6 +21,7 @@ function ContractContextProvider(props) {
     const [show, setShow] = useState(false);
     const [balance , setBalance] = useState(0);  
     
+    
   
 
 
@@ -45,9 +46,13 @@ function ContractContextProvider(props) {
         setTwinStaking(twinStaking);
     }
 
+    
+
+
     useEffect(() => {
         loadWeb3();
         loadContract();
+       
 
     }, [])
 
