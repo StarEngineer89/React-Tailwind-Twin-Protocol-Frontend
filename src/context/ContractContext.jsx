@@ -39,11 +39,14 @@ function ContractContextProvider(props) {
     }
 
     const loadContract = () => {
+      if(window.innerWidth > 720) {
         const web3 = window.web3;
         const twin = new web3.eth.Contract(twinTokenABI, twinTokenContractAddress);
         setTwin(twin);
         const twinStaking = new web3.eth.Contract(twinStakingABI, twinStakingContractAddress);
         setTwinStaking(twinStaking);
+      }
+        
     }
 
     
