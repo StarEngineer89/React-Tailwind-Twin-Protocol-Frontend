@@ -33,7 +33,7 @@ function ContractContextProvider(props) {
           else if (window.web3) {
             window.web3 = new Web3(window.web3.currentProvider)
           }
-          else {
+          else if (window.innerWidth > 720 && !window.web3) {
             window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
           }
     }
