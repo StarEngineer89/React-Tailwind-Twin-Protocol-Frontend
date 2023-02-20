@@ -2,6 +2,7 @@ import React, {useState, createContext, useEffect} from "react";
 
 import Web3 from 'web3';
 
+
 export const ContractContext = createContext();
 
 import TwinToken from '../contracts/IERC20.json';
@@ -45,7 +46,7 @@ function ContractContextProvider(props) {
         setTwin(twin);
         const twinStaking = new web3.eth.Contract(twinStakingABI, twinStakingContractAddress);
         setTwinStaking(twinStaking);
-      }
+      } 
         
     }
 
